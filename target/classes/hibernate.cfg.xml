@@ -35,6 +35,9 @@
 		<!-- Mapeamento das Entidades -->
 		<mapping class="com.wrathcodes.drograria.domain.Ingredient" />
 		<mapping class="com.wrathcodes.drograria.domain.Category" />
+		<mapping class="com.wrathcodes.drograria.domain.Restaurant" />
+		<mapping class="com.wrathcodes.drograria.domain.Menu" />
+
 		
 	</session-factory>
 
