@@ -1,7 +1,10 @@
 package com.wrathcodes.drograria.domain;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Ingredient extends GenericDomain {
@@ -11,6 +14,9 @@ public class Ingredient extends GenericDomain {
 
     @Column(length = 100, nullable = false)
     private String description;
+
+    @ManyToMany
+    private Collection<MenuItem> menuItem;
 
     // Getters and Setters
     public String getName() {

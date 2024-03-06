@@ -37,6 +37,7 @@
 		<mapping class="com.wrathcodes.drograria.domain.Category" />
 		<mapping class="com.wrathcodes.drograria.domain.Restaurant" />
 		<mapping class="com.wrathcodes.drograria.domain.Menu" />
+		<mapping class="com.wrathcodes.drograria.domain.MenuItem" />
 
 		
 	</session-factory>
