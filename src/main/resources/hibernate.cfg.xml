@@ -32,6 +32,10 @@
 		<!-- Cria as tabelas do banco de dados -->
 		<property name="hbm2ddl.auto">create</property>
 		
+		<!-- Mapeamento das Entidades -->
+		<mapping class="com.wrathcodes.drograria.domain.Ingredient" />
+		<mapping class="com.wrathcodes.drograria.domain.Category" />
+		
 	</session-factory>
 
 </hibernate-configuration>

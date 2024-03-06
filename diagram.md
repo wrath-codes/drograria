@@ -14,9 +14,6 @@
     ```mermaid
         erDiagram
         RESTAURANT ||--|{ MENU : has
-        RESTAURANT ||--|| ADDRESS : has
-        RESTAURANT ||--|| OPEN-HOURS : has
-        OPEN-HOURS ||--|{ DAY-HOURS : has
         MENU ||--|{ MENU-ITEM : contains
         MENU-ITEM ||--|{ INGREDIENT : uses
         MENU-ITEM ||--|| CATEGORY : has
@@ -34,35 +31,8 @@
         RESTAURANT {
             int id PK
             string name 
-            int address_id FK
-            int hours_id FK
-            string phone
-            int capacity
         }
         
-        ADDRESS {
-            int id PK
-            int restaurant_id FK
-            int number
-            string street
-            string city
-            string state
-            string zip
-            string complement
-        }
-        
-        DAY-HOURS {
-            int id PK
-            string name
-            timestamp open
-            timestamp close
-        }
-        
-        OPEN-HOURS {
-            int id PK
-            int restaurant_id FK
-            int[] day_id FK
-        }
         
         MENU {
             int id PK
