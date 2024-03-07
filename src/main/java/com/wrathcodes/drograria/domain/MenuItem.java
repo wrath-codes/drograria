@@ -28,11 +28,11 @@ public class MenuItem extends GenericDomain {
     private Boolean kitchen;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Restaurant restaurant;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Category category;
 
     @ManyToMany
@@ -78,14 +78,6 @@ public class MenuItem extends GenericDomain {
         this.kitchen = kitchen;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -101,4 +93,13 @@ public class MenuItem extends GenericDomain {
     public void setIngredient(Collection<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
 }
