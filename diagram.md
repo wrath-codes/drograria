@@ -26,6 +26,7 @@
         WAITER ||--|{ TABLE : serves
         WAITER ||--|{ CHECK : delivers
         CHEF ||--|{ ORDER : prepares
+        BAR ||--|{ ORDER : prepares
 
 
         RESTAURANT {
@@ -102,6 +103,12 @@
         }
 
         CHEF {
+            int id PK
+            string name
+            int[] order_id FK
+        }
+        
+        BAR {
             int id PK
             string name
             int[] order_id FK

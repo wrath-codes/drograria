@@ -24,6 +24,9 @@ public class MenuItem extends GenericDomain {
     @Column(nullable = false)
     private Boolean available;
 
+    @Column(nullable = false)
+    private Boolean kitchen;
+
     @ManyToOne
     @JoinColumn
     private Restaurant restaurant;
@@ -33,5 +36,69 @@ public class MenuItem extends GenericDomain {
     private Category category;
 
     @ManyToMany
-    private Collection<Ingredient> ingredient;
+    private Collection<Ingredient> ingredients;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    public Boolean getKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(Boolean kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Collection<Ingredient> getIngredient() {
+        return ingredients;
+    }
+
+    public void setIngredient(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

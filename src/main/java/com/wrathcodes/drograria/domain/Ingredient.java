@@ -16,7 +16,7 @@ public class Ingredient extends GenericDomain {
     private String description;
 
     @ManyToMany
-    private Collection<MenuItem> menuItem;
+    private Collection<MenuItem> menuItems;
 
     // Getters and Setters
     public String getName() {
