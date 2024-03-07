@@ -2,7 +2,6 @@ package com.wrathcodes.drograria.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -18,7 +17,6 @@ public class RestaurantTable extends GenericDomain {
     private Integer capacity;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Restaurant restaurant;
 
     public Integer getNumber() {

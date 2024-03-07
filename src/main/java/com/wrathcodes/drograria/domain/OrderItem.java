@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -20,8 +19,18 @@ public class OrderItem extends GenericDomain {
     private Collection<MenuItem> items;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private Customer customer;
+
+    @ManyToOne
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

@@ -1,7 +1,11 @@
 package com.wrathcodes.drograria.domain;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -12,6 +16,9 @@ public class Customer extends GenericDomain {
 
     @OneToOne
     private RestaurantTable restaurantTable;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
+    private Collection<OrderItem> orders;
 
     public String getName() {
         return name;

@@ -1,7 +1,10 @@
 package com.wrathcodes.drograria.domain;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employee extends GenericDomain {
@@ -10,6 +13,9 @@ public class Employee extends GenericDomain {
 
     @Column(length = 14, nullable = false)
     private String cpf;
+
+    @OneToMany(mappedBy = "employee")
+    private Collection<OrderItem> orders;
 
     public String getName() {
         return name;
