@@ -3,7 +3,7 @@ package com.wrathcodes.util;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import com.wrathcodes.drograria.util.HibernateUtil;
+import com.wrathcodes.restaurant.util.HibernateUtil;
 
 public class HibernateUtilTest {
 
