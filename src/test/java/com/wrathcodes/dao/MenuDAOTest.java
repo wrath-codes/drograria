@@ -1,5 +1,8 @@
 package com.wrathcodes.dao;
 
+import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.wrathcodes.restaurant.dao.MenuDAO;
@@ -10,23 +13,104 @@ import com.wrathcodes.restaurant.domain.Restaurant;
 public class MenuDAOTest {
 
     @Test
+    @Ignore
     public void save() {
 
         // get restaurant
         Long restaurantCode = 1L;
         Restaurant restaurant = new RestaurantDAO().search(restaurantCode);
 
-        // create a new menu
-        Menu menu = new Menu();
-        menu.setName("Last Supper");
-        menu.setDescription("The last supper you will ever have");
-        menu.setSeason("Winter");
-        menu.setAvailable(true);
-        menu.setRestaurant(restaurant);
+        if (restaurant == null) {
+            System.out.println("Restaurant not found");
+        } else {
+            System.out.println("Restaurant found: " + restaurant.getName());
 
-        // create menu DAO
+            // create a new menu
+            Menu menu = new Menu();
+            menu.setName("Dad's Special");
+            menu.setDescription("Owner's favorite foods and drinks");
+            menu.setSeason("Summer");
+            menu.setAvailable(true);
+            menu.setRestaurant(restaurant);
+
+            // create menu DAO
+            MenuDAO menuDAO = new MenuDAO();
+            menuDAO.save(menu);
+        }
+    }
+
+    @Test
+    @Ignore
+    public void list() {
         MenuDAO menuDAO = new MenuDAO();
-        menuDAO.save(menu);
+
+        List<Menu> result = menuDAO.list();
+
+        for (Menu menu : result) {
+            System.out.println(
+                    "Code: " + menu.getCode() + " - " + menu.getName() + " - " + menu.getRestaurant().getName());
+        }
+    }
+
+    @Test
+    @Ignore
+    public void search() {
+        Long code = 1L;
+        MenuDAO menuDAO = new MenuDAO();
+        Menu menu = menuDAO.search(code);
+
+        if (menu == null) {
+            System.err.println("Record not found");
+        } else {
+            System.out.println("Record found:");
+            System.out.println(menu.getCode() + ": " + menu.getName());
+        }
+    }
+
+    @Test
+    @Ignore
+    public void delete() {
+        Long code = 1L;
+        MenuDAO menuDAO = new MenuDAO();
+        Menu menu = menuDAO.search(code);
+        if (menu == null) {
+            System.err.println("Record not found");
+        } else {
+            menuDAO.delete(menu);
+            System.out.println("Record deleted:");
+            System.out.println(menu.getCode() + ": " + menu.getName());
+        }
+    }
+
+    @Test
+    // @Ignore
+    public void update() {
+        Long restaurantCode = 1L;
+        Long menuCode = 2L;
+
+        Restaurant restaurant = new RestaurantDAO().search(restaurantCode);
+        Menu menu = new MenuDAO().search(menuCode);
+
+        if (restaurant == null || menu == null) {
+            System.out.println("Restaurant or Menu not found");
+        } else {
+            System.out.println("Restaurant and Menu found: " + restaurant.getName() + " - " + menu.getName());
+
+            menu.setRestaurant(restaurant);
+            menu.setName("Mom's Special");
+            menu.setDescription("Owner's favorite foods and drinks");
+            menu.setSeason("Winter");
+            menu.setAvailable(true);
+
+            MenuDAO menuDAO = new MenuDAO();
+            menuDAO.update(menu);
+
+            System.out.println("Record updated:");
+            System.out.println(menu.getCode() + ": " + menu.getName());
+            System.out.println("Description: " + menu.getDescription());
+            System.out.println("Season: " + menu.getSeason());
+            System.out.println("Available: " + menu.getAvailable());
+        }
     }
 
 }
