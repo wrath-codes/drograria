@@ -37,6 +37,9 @@ public class MenuItem extends GenericDomain {
     @ManyToMany(targetEntity = Ingredient.class)
     private Collection<Ingredient> ingredients;
 
+    @ManyToMany(targetEntity = OrderItem.class, mappedBy = "items")
+    private Collection<OrderItem> orders;
+
     public String getName() {
         return name;
     }
@@ -91,5 +94,29 @@ public class MenuItem extends GenericDomain {
 
     public void setIngredient(Collection<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Collection<OrderItem> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Collection<OrderItem> orders) {
+        this.orders = orders;
     }
 }

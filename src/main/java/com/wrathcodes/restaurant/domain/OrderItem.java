@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -15,22 +16,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class OrderItem extends GenericDomain {
 
-    @ManyToMany
-    private Collection<MenuItem> items;
-
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Customer customer;
-
-    @ManyToOne(optional = true)
-    private Employee employee;
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
@@ -42,13 +30,8 @@ public class OrderItem extends GenericDomain {
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderedAt;
 
-    public Collection<MenuItem> getItems() {
-        return items;
-    }
-
-    public void setItems(Collection<MenuItem> items) {
-        this.items = items;
-    }
+    @ManyToMany(targetEntity = MenuItem.class)
+    private Collection<MenuItem> items;
 
     public Customer getCustomer() {
         return customer;
@@ -80,5 +63,13 @@ public class OrderItem extends GenericDomain {
 
     public void setOrderedAt(Date orderedAt) {
         this.orderedAt = orderedAt;
+    }
+
+    public Collection<MenuItem> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<MenuItem> items) {
+        this.items = items;
     }
 }
