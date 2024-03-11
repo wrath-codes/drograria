@@ -10,11 +10,9 @@
 
 		<!-- Configurações de Conexão com o Banco de Dados -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<!-- <property name="connection.url">jdbc:mysql://localhost:33061/restaurant</property> -->
-		<property name="connection.url">jdbc:mysql://localhost:3306/restaurant</property>
+		<property name="connection.url">jdbc:mysql://localhost:33061/restaurant</property>
 		<property name="connection.username">root</property>
-		<!-- <property name="connection.password">Quel6969!</property> -->
-		<property name="connection.password">quel</property>
+		<property name="connection.password">Quel6969!</property>
 
 		<!-- Pool de Conexões -->
 		<property name="connection.pool_size">1</property>
@@ -36,21 +34,20 @@
 		<property name="show_sql">true</property>
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hbm2ddl.auto">validate</property>
+		<property name="hbm2ddl.auto">create</property>
 		
 		<!-- Mapeamento das Entidades -->
-		<mapping class="com.wrathcodes.restaurant.domain.Ingredient" />
+		<!-- <mapping class="com.wrathcodes.restaurant.domain.Ingredient" />
 		<mapping class="com.wrathcodes.restaurant.domain.Category" />
-		<mapping class="com.wrathcodes.restaurant.domain.RestaurantTable" />
+		<mapping class="com.wrathcodes.restaurant.domain.RestaurantTable" /> -->
 		<mapping class="com.wrathcodes.restaurant.domain.Restaurant" />
-		<mapping class="com.wrathcodes.restaurant.domain.Menu" />
+		<!-- <mapping class="com.wrathcodes.restaurant.domain.Menu" />
 		<mapping class="com.wrathcodes.restaurant.domain.MenuItem" />
 		<mapping class="com.wrathcodes.restaurant.domain.Customer" />
 		<mapping class="com.wrathcodes.restaurant.domain.Employee" />
 		<mapping class="com.wrathcodes.restaurant.domain.Bar" />
 		<mapping class="com.wrathcodes.restaurant.domain.Kitchen" />
-		<mapping class="com.wrathcodes.restaurant.domain.OrderItem" />
-		<mapping class="com.wrathcodes.restaurant.domain.TableCheck" />
+		<mapping class="com.wrathcodes.restaurant.domain.OrderItem" /> -->
 
 
 

@@ -10,7 +10,7 @@
 
 		<!-- Configurações de Conexão com o Banco de Dados -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:33061/drogaria</property>
+		<property name="connection.url">jdbc:mysql://localhost:33061/restaurant</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">Quel6969!</property>
 
@@ -37,17 +37,17 @@
 		<property name="hbm2ddl.auto">create</property>
 		
 		<!-- Mapeamento das Entidades -->
-		<mapping class="com.wrathcodes.drograria.domain.Ingredient" />
-		<mapping class="com.wrathcodes.drograria.domain.Category" />
-		<mapping class="com.wrathcodes.drograria.domain.RestaurantTable" />
-		<mapping class="com.wrathcodes.drograria.domain.Restaurant" />
-		<mapping class="com.wrathcodes.drograria.domain.Menu" />
-		<mapping class="com.wrathcodes.drograria.domain.MenuItem" />
-		<mapping class="com.wrathcodes.drograria.domain.Customer" />
-		<mapping class="com.wrathcodes.drograria.domain.Employee" />
-		<mapping class="com.wrathcodes.drograria.domain.Bar" />
-		<mapping class="com.wrathcodes.drograria.domain.Kitchen" />
-		<mapping class="com.wrathcodes.drograria.domain.OrderItem" />
+		<!-- <mapping class="com.wrathcodes.restaurant.domain.Ingredient" />
+		<mapping class="com.wrathcodes.restaurant.domain.Category" />
+		<mapping class="com.wrathcodes.restaurant.domain.RestaurantTable" /> -->
+		<mapping class="com.wrathcodes.restaurant.domain.Restaurant" />
+		<!-- <mapping class="com.wrathcodes.restaurant.domain.Menu" />
+		<mapping class="com.wrathcodes.restaurant.domain.MenuItem" />
+		<mapping class="com.wrathcodes.restaurant.domain.Customer" />
+		<mapping class="com.wrathcodes.restaurant.domain.Employee" />
+		<mapping class="com.wrathcodes.restaurant.domain.Bar" />
+		<mapping class="com.wrathcodes.restaurant.domain.Kitchen" />
+		<mapping class="com.wrathcodes.restaurant.domain.OrderItem" /> -->
 
 
 
