@@ -38,7 +38,7 @@ public class RestaurantDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void search() {
         Long code = 2L;
         RestaurantDAO restaurantDAO = new RestaurantDAO();
@@ -48,6 +48,21 @@ public class RestaurantDAOTest {
             System.err.println("Record not found");
         } else {
             System.err.println("Record found:");
+            System.err.println(restaurant.getName());
+        }
+    }
+
+    @Test
+    @Ignore
+    public void delete() {
+        Long code = 2L;
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        Restaurant restaurant = restaurantDAO.search(code);
+        if (restaurant == null) {
+            System.err.println("Record not found");
+        } else {
+            restaurantDAO.delete(restaurant);
+            System.err.println("Record deleted:");
             System.err.println(restaurant.getName());
         }
     }

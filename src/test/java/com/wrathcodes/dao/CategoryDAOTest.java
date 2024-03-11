@@ -38,7 +38,7 @@ public class CategoryDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void search() {
         Long code = 1L;
         CategoryDAO categoryDAO = new CategoryDAO();
@@ -52,4 +52,18 @@ public class CategoryDAOTest {
         }
     }
 
+    @Test
+    @Ignore
+    public void delete() {
+        Long code = 1L;
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Category category = categoryDAO.search(code);
+
+        if (category == null) {
+            System.err.println("Record not found");
+        } else {
+            categoryDAO.delete(category);
+            System.err.println("Record deleted");
+        }
+    }
 }

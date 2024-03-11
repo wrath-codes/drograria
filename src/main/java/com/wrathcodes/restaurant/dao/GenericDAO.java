@@ -66,4 +66,22 @@ public class GenericDAO<Entity> {
             session.close();
         }
     }
+
+    public void delete(Entity entity) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.delete(entity);
+            transaction.commit();
+        } catch (RuntimeException error) {
+            if (transaction != null) {
+                transaction.rollback();
+                throw error;
+            }
+        } finally {
+            session.close();
+        }
+    }
 }
