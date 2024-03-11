@@ -16,7 +16,7 @@ public class RestaurantDAOTest {
         Restaurant restaurant = new Restaurant();
 
         // create a new restaurant
-        restaurant.setName("McDonald's");
+        restaurant.setName("Papa John's");
 
         // create restaurant DAO
         RestaurantDAO restaurantDAO = new RestaurantDAO();
@@ -33,7 +33,7 @@ public class RestaurantDAOTest {
         // print the result
         System.err.println("Total of restaurants: " + result.size());
         for (Restaurant restaurant : result) {
-            System.err.println(restaurant.getName());
+            System.err.println("Code: " + restaurant.getCode() + " - " + restaurant.getName());
         }
     }
 
@@ -63,6 +63,27 @@ public class RestaurantDAOTest {
         } else {
             restaurantDAO.delete(restaurant);
             System.err.println("Record deleted:");
+            System.err.println(restaurant.getName());
+        }
+    }
+
+    @Test
+    // @Ignore
+    public void update() {
+        // search the restaurant
+        Long code = 4L;
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        Restaurant restaurant = restaurantDAO.search(code);
+
+        // update the restaurant
+        if (restaurant == null) {
+            System.err.println("Record not found");
+        } else {
+            System.err.println("Record found:");
+            System.err.println(restaurant.getName());
+            restaurant.setName("Burger King");
+            restaurantDAO.update(restaurant);
+            System.err.println("Record updated:");
             System.err.println(restaurant.getName());
         }
     }

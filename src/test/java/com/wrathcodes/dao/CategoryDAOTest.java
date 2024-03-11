@@ -66,4 +66,24 @@ public class CategoryDAOTest {
             System.err.println("Record deleted");
         }
     }
+
+    @Test
+    @Ignore
+    public void update() {
+        Long code = 2L;
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Category category = categoryDAO.search(code);
+
+        if (category == null) {
+            System.err.println("Record not found");
+        } else {
+            System.err.println("Record found:");
+            System.err.println(category.getName() + ": " + category.getDescription());
+            category.setName("Kebab");
+            category.setDescription("All about the kebab");
+            categoryDAO.update(category);
+            System.err.println("Record updated:");
+            System.err.println(category.getName() + ": " + category.getDescription());
+        }
+    }
 }

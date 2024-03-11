@@ -84,4 +84,22 @@ public class GenericDAO<Entity> {
             session.close();
         }
     }
+
+    public void update(Entity entity) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.update(entity);
+            transaction.commit();
+        } catch (RuntimeException error) {
+            if (transaction != null) {
+                transaction.rollback();
+                throw error;
+            }
+        } finally {
+            session.close();
+        }
+    }
 }
