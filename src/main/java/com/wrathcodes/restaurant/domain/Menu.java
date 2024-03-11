@@ -1,13 +1,9 @@
 package com.wrathcodes.restaurant.domain;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Menu extends GenericDomain {
@@ -24,11 +20,8 @@ public class Menu extends GenericDomain {
     @Column(nullable = false)
     private Boolean available;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "menu", orphanRemoval = true)
-    private Collection<MenuItem> menuItems;
-
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Restaurant restaurant;
 
     public String getName() {
@@ -63,12 +56,11 @@ public class Menu extends GenericDomain {
         this.available = available;
     }
 
-    public Collection<MenuItem> getMenuItems() {
-        return menuItems;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setMenuItems(Collection<MenuItem> menuItems) {
-        this.menuItems = menuItems;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
-
 }

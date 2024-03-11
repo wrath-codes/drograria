@@ -6,7 +6,6 @@ import org.junit.Test;
 import com.wrathcodes.restaurant.util.HibernateUtil;
 
 public class HibernateUtilTest {
-
     @Test
     public void connect() {
         Session session = HibernateUtil.getSessionFactory().openSession();
