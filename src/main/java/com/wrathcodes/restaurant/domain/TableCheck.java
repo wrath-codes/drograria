@@ -3,17 +3,13 @@ package com.wrathcodes.restaurant.domain;
 import java.math.BigDecimal;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class TableCheck extends GenericDomain {
-
-    @OneToMany(mappedBy = "check", cascade = CascadeType.ALL)
-    private Collection<Customer> customers;
 
     @Column(nullable = false)
     private Boolean closed;
@@ -21,16 +17,9 @@ public class TableCheck extends GenericDomain {
     @Column(nullable = false, precision = 6, scale = 2)
     private BigDecimal total;
 
-    @ManyToOne
-    private RestaurantTable restaurantTable;
-
-    public Collection<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Collection<Customer> customers) {
-        this.customers = customers;
-    }
+    @OneToMany
+    @JoinColumn(nullable = false)
+    private Collection<OrderItem> orders;
 
     public Boolean getClosed() {
         return closed;
@@ -48,12 +37,11 @@ public class TableCheck extends GenericDomain {
         this.total = total;
     }
 
-    public RestaurantTable getRestaurantTable() {
-        return restaurantTable;
+    public Collection<OrderItem> getOrders() {
+        return orders;
     }
 
-    public void setRestaurantTable(RestaurantTable restaurantTable) {
-        this.restaurantTable = restaurantTable;
+    public void setOrders(Collection<OrderItem> orders) {
+        this.orders = orders;
     }
-
 }
