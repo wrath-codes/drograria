@@ -1,12 +1,9 @@
 package com.wrathcodes.restaurant.domain;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Customer extends GenericDomain {
@@ -14,11 +11,9 @@ public class Customer extends GenericDomain {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
-    private Collection<OrderItem> orders;
-
     @ManyToOne
-    private TableCheck check;
+    @JoinColumn(nullable = false)
+    private RestaurantTable seatedAt;
 
     public String getName() {
         return name;
@@ -28,12 +23,12 @@ public class Customer extends GenericDomain {
         this.name = name;
     }
 
-    public Collection<OrderItem> getOrders() {
-        return orders;
+    public RestaurantTable getSeatedAt() {
+        return seatedAt;
     }
 
-    public void setOrders(Collection<OrderItem> orders) {
-        this.orders = orders;
+    public void setSeatedAt(RestaurantTable seatedAt) {
+        this.seatedAt = seatedAt;
     }
 
 }
