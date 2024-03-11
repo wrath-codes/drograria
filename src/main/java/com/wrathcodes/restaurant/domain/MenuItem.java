@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -27,12 +28,13 @@ public class MenuItem extends GenericDomain {
     private Boolean kitchen;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Menu menu;
 
     @ManyToOne
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Ingredient.class)
     private Collection<Ingredient> ingredients;
 
     public String getName() {

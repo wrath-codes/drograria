@@ -37,12 +37,12 @@
 		<property name="hbm2ddl.auto">create</property>
 		
 		<!-- Mapeamento das Entidades -->
-		<!-- <mapping class="com.wrathcodes.restaurant.domain.Ingredient" /> -->
+		<mapping class="com.wrathcodes.restaurant.domain.Ingredient" />
 		<mapping class="com.wrathcodes.restaurant.domain.Category" />
 		<mapping class="com.wrathcodes.restaurant.domain.Restaurant" />
 		<mapping class="com.wrathcodes.restaurant.domain.RestaurantTable" /> 
 		<mapping class="com.wrathcodes.restaurant.domain.Menu" />
-		<!-- <mapping class="com.wrathcodes.restaurant.domain.MenuItem" /> -->
+		<mapping class="com.wrathcodes.restaurant.domain.MenuItem" />
 		<!-- <mapping class="com.wrathcodes.restaurant.domain.Customer" /> -->
 		<!-- <mapping class="com.wrathcodes.restaurant.domain.Employee" /> -->
 		<!-- <mapping class="com.wrathcodes.restaurant.domain.Bar" /> -->

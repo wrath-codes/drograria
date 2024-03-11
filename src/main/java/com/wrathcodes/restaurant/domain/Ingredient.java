@@ -15,7 +15,7 @@ public class Ingredient extends GenericDomain {
     @Column(length = 100, nullable = false)
     private String description;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = MenuItem.class, mappedBy = "ingredients")
     private Collection<MenuItem> menuItems;
 
     // Getters and Setters
