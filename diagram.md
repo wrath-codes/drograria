@@ -17,16 +17,10 @@
         MENU ||--|{ MENU-ITEM : contains
         MENU-ITEM ||--|{ INGREDIENT : uses
         MENU-ITEM ||--|| CATEGORY : has
-        ORDER ||--|{ MENU-ITEM : contains
-        CHECK ||--|{ ORDER : has
-        CUSTOMER ||--|{ ORDER : places
+        ORDER-ITEM ||--|{ MENU-ITEM : contains
+        CHECK ||--|{ CUSTOMER : has
+        CUSTOMER ||--|{ ORDER-ITEM : places
         TABLE ||--|{ CUSTOMER : has
-        TABLE ||--|| WAITER : serves
-        WAITER ||--|{ ORDER : takes
-        WAITER ||--|{ TABLE : serves
-        WAITER ||--|{ CHECK : delivers
-        CHEF ||--|{ ORDER : prepares
-        BAR ||--|{ ORDER : prepares
 
 
         RESTAURANT {
@@ -73,17 +67,10 @@
             int[] order_id FK
         }
         
-        WAITER {
-            int id PK
-            int restaurant_id FK
-            string name
-            int[] table_id FK
-        }
         
-        ORDER {
+        ORDER-ITEM {
             int id PK
             int customer_id FK
-            int waiter_id FK
             int[] menu_item_id FK
             timestamp time
             string status
@@ -99,18 +86,8 @@
         CHECK {
             int id PK
             double total
-            int[] order_id FK
+            int customer_id FK
         }
 
-        CHEF {
-            int id PK
-            string name
-            int[] order_id FK
-        }
-        
-        BAR {
-            int id PK
-            string name
-            int[] order_id FK
-        }
+
     ```
