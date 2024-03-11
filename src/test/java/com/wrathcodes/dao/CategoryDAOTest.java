@@ -24,6 +24,7 @@ public class CategoryDAOTest {
     }
 
     @Test
+    @Ignore
     public void list() {
         CategoryDAO categoryDAO = new CategoryDAO();
         List<Category> result = categoryDAO.list();
@@ -33,6 +34,21 @@ public class CategoryDAOTest {
         for (Category category : result) {
             System.err.println(category.getName() + ": " + category.getDescription());
 
+        }
+    }
+
+    @Test
+    // @Ignore
+    public void search() {
+        Long code = 1L;
+        CategoryDAO categoryDAO = new CategoryDAO();
+        Category category = categoryDAO.search(code);
+
+        if (category == null) {
+            System.err.println("Record not found");
+        } else {
+            System.err.println("Record found:");
+            System.err.println(category.getName() + ": " + category.getDescription());
         }
     }
 

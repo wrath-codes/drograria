@@ -51,4 +51,19 @@ public class GenericDAO<Entity> {
             session.close();
         }
     }
+
+    @SuppressWarnings("unchecked")
+    public Entity search(Long code) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Criteria query = session.createCriteria(entityClass);
+            query = query.add(org.hibernate.criterion.Restrictions.idEq(code));
+            Entity result = (Entity) query.uniqueResult();
+            return result;
+        } catch (RuntimeException error) {
+            throw error;
+        } finally {
+            session.close();
+        }
+    }
 }

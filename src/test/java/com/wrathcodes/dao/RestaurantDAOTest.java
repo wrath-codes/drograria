@@ -25,7 +25,7 @@ public class RestaurantDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void list() {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         List<Restaurant> result = restaurantDAO.list();
@@ -33,6 +33,21 @@ public class RestaurantDAOTest {
         // print the result
         System.err.println("Total of restaurants: " + result.size());
         for (Restaurant restaurant : result) {
+            System.err.println(restaurant.getName());
+        }
+    }
+
+    @Test
+    // @Ignore
+    public void search() {
+        Long code = 2L;
+        RestaurantDAO restaurantDAO = new RestaurantDAO();
+        Restaurant restaurant = restaurantDAO.search(code);
+
+        if (restaurant == null) {
+            System.err.println("Record not found");
+        } else {
+            System.err.println("Record found:");
             System.err.println(restaurant.getName());
         }
     }
