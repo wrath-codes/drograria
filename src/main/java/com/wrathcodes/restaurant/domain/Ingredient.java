@@ -35,4 +35,11 @@ public class Ingredient extends GenericDomain {
         this.description = description;
     }
 
+    public Collection<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(Collection<MenuItem> menuItems) {
+        this.menuItems = menuItems;
+    }
 }
