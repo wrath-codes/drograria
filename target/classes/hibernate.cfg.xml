@@ -47,6 +47,7 @@
 		<mapping class="com.wrathcodes.restaurant.domain.MenuItem" />
 		<mapping class="com.wrathcodes.restaurant.domain.Customer" />
 		<mapping class="com.wrathcodes.restaurant.domain.OrderItem" />
+		<mapping class="com.wrathcodes.restaurant.domain.OrderCustomer" />
 		<mapping class="com.wrathcodes.restaurant.domain.TableCheck" />
 
 

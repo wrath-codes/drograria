@@ -17,7 +17,7 @@ public class MenuDAOTest {
     public void save() {
 
         // get restaurant
-        Long restaurantCode = 2L;
+        Long restaurantCode = 1L;
         Restaurant restaurant = new RestaurantDAO().search(restaurantCode);
 
         if (restaurant == null) {
@@ -36,6 +36,16 @@ public class MenuDAOTest {
             // create menu DAO
             MenuDAO menuDAO = new MenuDAO();
             menuDAO.save(menu);
+
+            System.out.println("Menu saved successfully");
+            System.out.println("╭────────────────────────────╮\n" +
+                    "│ Code: " + menu.getCode() + "\n" +
+                    "│ Name: " + menu.getName() + "\n" +
+                    "│ Description: " + menu.getDescription() + "\n" +
+                    "│ Season: " + menu.getSeason() + "\n" +
+                    "│ Available: " + menu.getAvailable() + "\n" +
+                    "│ Restaurant: " + menu.getRestaurant().getName() + "\n" +
+                    "╰────────────────────────────╯");
         }
     }
 

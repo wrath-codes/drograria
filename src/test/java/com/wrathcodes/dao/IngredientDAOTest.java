@@ -33,6 +33,10 @@ public class IngredientDAOTest {
         // ingredient.setName("Pickles");
         // ingredient.setDescription("Green, crunchy, and sour");
 
+        // Bread
+        // ingredient.setName("Bread");
+        // ingredient.setDescription("White, soft, and fluffy");
+
         // create ingredient DAO
         IngredientDAO ingredientDAO = new IngredientDAO();
         ingredientDAO.save(ingredient);

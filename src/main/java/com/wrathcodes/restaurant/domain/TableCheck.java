@@ -1,12 +1,11 @@
 package com.wrathcodes.restaurant.domain;
 
 import java.math.BigDecimal;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class TableCheck extends GenericDomain {
@@ -15,11 +14,19 @@ public class TableCheck extends GenericDomain {
     private Boolean closed;
 
     @Column(nullable = false, precision = 6, scale = 2)
-    private BigDecimal total;
+    private BigDecimal checkTotal;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(nullable = false)
-    private Collection<OrderItem> orders;
+    private RestaurantTable restaurantTable;
+
+    public RestaurantTable getRestaurantTable() {
+        return restaurantTable;
+    }
+
+    public void setRestaurantTable(RestaurantTable restaurantTable) {
+        this.restaurantTable = restaurantTable;
+    }
 
     public Boolean getClosed() {
         return closed;
@@ -30,18 +37,11 @@ public class TableCheck extends GenericDomain {
     }
 
     public BigDecimal getTotal() {
-        return total;
+        return checkTotal;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotal(BigDecimal checkTotal) {
+        this.checkTotal = checkTotal;
     }
 
-    public Collection<OrderItem> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Collection<OrderItem> orders) {
-        this.orders = orders;
-    }
 }

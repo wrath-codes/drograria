@@ -29,7 +29,7 @@ public class CustomerDAOTest {
             Customer customer = new Customer();
 
             // customer.setName("Ronald McDonald");
-            customer.setName("Seth McFallan");
+            customer.setName("Homer Simpsom");
             customer.setSeatedAt(restaurantTable);
 
             // create customer DAO

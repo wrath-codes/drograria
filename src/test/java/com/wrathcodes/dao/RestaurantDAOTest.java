@@ -16,11 +16,17 @@ public class RestaurantDAOTest {
         Restaurant restaurant = new Restaurant();
 
         // create a new restaurant
-        restaurant.setName("Bob's Burger");
+        restaurant.setName("Arby's");
 
         // create restaurant DAO
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         restaurantDAO.save(restaurant);
+
+        System.out.println("Restaurant saved successfully");
+        System.out.println("╭────────────────────────────╮\n" +
+                "│ Code: " + restaurant.getCode() + "\n" +
+                "│ Name: " + restaurant.getName() + "\n" +
+                "╰────────────────────────────╯");
 
     }
 
@@ -30,11 +36,20 @@ public class RestaurantDAOTest {
         RestaurantDAO restaurantDAO = new RestaurantDAO();
         List<Restaurant> result = restaurantDAO.list();
 
-        // print the result
-        System.err.println("Total of restaurants: " + result.size());
-        for (Restaurant restaurant : result) {
-            System.err.println("Code: " + restaurant.getCode() + " - " + restaurant.getName());
+        System.out.println("Restaurants found: " + result.size());
+        for (int position = 0; position < result.size(); position++) {
+            System.out.println("╭────────────────────────────╮");
+            if (position > 0) {
+                System.out.println("├────────────────────────────┤");
+                System.out.println("│ Code: " + result.get(position).getCode() + "\n" +
+                        "│ Name: " + result.get(position).getName());
+            } else {
+                System.out.println("│ Code: " + result.get(position).getCode() + "\n" +
+                        "│ Name: " + result.get(position).getName());
+            }
+            System.out.println("╰────────────────────────────╯");
         }
+
     }
 
     @Test

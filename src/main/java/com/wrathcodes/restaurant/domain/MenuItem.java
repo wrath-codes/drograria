@@ -1,8 +1,9 @@
 package com.wrathcodes.restaurant.domain;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -34,11 +35,8 @@ public class MenuItem extends GenericDomain {
     @ManyToOne
     private Category category;
 
-    @ManyToMany(targetEntity = Ingredient.class)
-    private Collection<Ingredient> ingredients;
-
-    @ManyToMany(targetEntity = OrderItem.class, mappedBy = "items")
-    private Collection<OrderItem> orders;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private Set<Ingredient> ingredients;
 
     public String getName() {
         return name;
@@ -96,19 +94,11 @@ public class MenuItem extends GenericDomain {
         this.category = category;
     }
 
-    public Collection<Ingredient> getIngredient() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredient(Collection<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public void addIngredient(Ingredient ingredient) {
-        this.ingredients.add(ingredient);
-    }
-
-    public void removeIngredient(Ingredient ingredient) {
-        this.ingredients.remove(ingredient);
     }
 }

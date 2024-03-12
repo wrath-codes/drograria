@@ -1,6 +1,5 @@
 package com.wrathcodes.restaurant.domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,18 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class OrderItem extends GenericDomain {
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Customer customer;
-
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
@@ -27,19 +20,19 @@ public class OrderItem extends GenericDomain {
     private OrderPriority priority;
 
     @Column(nullable = false)
+    private Integer quantity;
+
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderedAt;
 
-    @ManyToMany(targetEntity = MenuItem.class)
-    private Collection<MenuItem> items;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private MenuItem item;
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private OrderCustomer orderCustomer;
 
     public OrderStatus getStatus() {
         return status;
@@ -65,11 +58,28 @@ public class OrderItem extends GenericDomain {
         this.orderedAt = orderedAt;
     }
 
-    public Collection<MenuItem> getItems() {
-        return items;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setItems(Collection<MenuItem> items) {
-        this.items = items;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
+
+    public MenuItem getItem() {
+        return item;
+    }
+
+    public void setItem(MenuItem item) {
+        this.item = item;
+    }
+
+    public OrderCustomer getOrderCustomer() {
+        return orderCustomer;
+    }
+
+    public void setOrderCustomer(OrderCustomer orderCustomer) {
+        this.orderCustomer = orderCustomer;
+    }
+
 }
