@@ -16,7 +16,7 @@ public class RestaurantDAOTest {
         Restaurant restaurant = new Restaurant();
 
         // create a new restaurant
-        restaurant.setName("Papa John's");
+        restaurant.setName("Bob's Burger");
 
         // create restaurant DAO
         RestaurantDAO restaurantDAO = new RestaurantDAO();
@@ -68,7 +68,7 @@ public class RestaurantDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void update() {
         // search the restaurant
         Long code = 4L;

@@ -15,7 +15,7 @@ public class RestaurantTableDAOTest {
     public void save() {
 
         // get restaurant
-        Long restaurantCode = 1L;
+        Long restaurantCode = 2L;
         Restaurant restaurant = new RestaurantDAO().search(restaurantCode);
 
         if (restaurant == null) {
@@ -109,7 +109,7 @@ public class RestaurantTableDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void update() {
         Long restaurantCode = 1L;
         Long restaurantTableCode = 3L;

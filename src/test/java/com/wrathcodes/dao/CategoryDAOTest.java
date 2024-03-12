@@ -15,8 +15,11 @@ public class CategoryDAOTest {
     public void save() {
         // create a new category
         Category category = new Category();
-        category.setName("Pizza");
-        category.setDescription("All about pizza");
+        // category.setName("Pizza");
+        // category.setDescription("All about pizza");
+
+        category.setName("Burgers");
+        category.setDescription("All about burgers");
 
         // create category DAO
         CategoryDAO categoryDAO = new CategoryDAO();
@@ -32,7 +35,7 @@ public class CategoryDAOTest {
         // print the result
         System.err.println("Total of categories: " + result.size());
         for (Category category : result) {
-            System.err.println(category.getName() + ": " + category.getDescription());
+            System.err.println(category.getCode() + " - " + category.getName() + ": " + category.getDescription());
 
         }
     }

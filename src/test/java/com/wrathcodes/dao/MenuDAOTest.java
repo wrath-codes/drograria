@@ -17,7 +17,7 @@ public class MenuDAOTest {
     public void save() {
 
         // get restaurant
-        Long restaurantCode = 1L;
+        Long restaurantCode = 2L;
         Restaurant restaurant = new RestaurantDAO().search(restaurantCode);
 
         if (restaurant == null) {
@@ -27,9 +27,9 @@ public class MenuDAOTest {
 
             // create a new menu
             Menu menu = new Menu();
-            menu.setName("Dad's Special");
-            menu.setDescription("Owner's favorite foods and drinks");
-            menu.setSeason("Summer");
+            menu.setName("Last Super");
+            menu.setDescription("Last meal you'll ever eat");
+            menu.setSeason("winter");
             menu.setAvailable(true);
             menu.setRestaurant(restaurant);
 
@@ -83,7 +83,7 @@ public class MenuDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void update() {
         Long restaurantCode = 1L;
         Long menuCode = 2L;

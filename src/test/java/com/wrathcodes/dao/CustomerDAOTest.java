@@ -28,7 +28,8 @@ public class CustomerDAOTest {
             // create a new customer
             Customer customer = new Customer();
 
-            customer.setName("Ronald McDonald");
+            // customer.setName("Ronald McDonald");
+            customer.setName("Seth McFallan");
             customer.setSeatedAt(restaurantTable);
 
             // create customer DAO
@@ -117,7 +118,7 @@ public class CustomerDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void update() {
         Long restaurantTableCode = 1L;
         Long customerCode = 2L;

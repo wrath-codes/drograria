@@ -80,6 +80,14 @@ public class MenuItem extends GenericDomain {
         this.kitchen = kitchen;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -96,27 +104,11 @@ public class MenuItem extends GenericDomain {
         this.ingredients = ingredients;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public Collection<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(Collection<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Collection<OrderItem> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Collection<OrderItem> orders) {
-        this.orders = orders;
+    public void removeIngredient(Ingredient ingredient) {
+        this.ingredients.remove(ingredient);
     }
 }
