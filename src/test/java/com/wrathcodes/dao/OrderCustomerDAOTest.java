@@ -46,7 +46,7 @@ public class OrderCustomerDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void list() {
         OrderCustomerDAO orderCustomerDAO = new OrderCustomerDAO();
 

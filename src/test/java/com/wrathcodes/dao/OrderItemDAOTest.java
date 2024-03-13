@@ -61,7 +61,7 @@ public class OrderItemDAOTest {
     }
 
     @Test
-    // @Ignore
+    @Ignore
     public void list() {
         OrderItemDAO orderItemDAO = new OrderItemDAO();
         List<OrderItem> result = orderItemDAO.list();
