@@ -3,11 +3,15 @@ package com.wrathcodes.restaurant.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.wrathcodes.restaurant.util.HibernateUtil;
+
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 public class GenericDAO<Entity> {
     private Class<Entity> entityClass;
@@ -26,7 +30,7 @@ public class GenericDAO<Entity> {
 
         try {
             transaction = session.beginTransaction();
-            session.save(entity);
+            session.getEntityManagerFactory().createEntityManager().persist(entity);
             transaction.commit();
         } catch (RuntimeException error) {
             if (transaction != null) {
@@ -38,12 +42,16 @@ public class GenericDAO<Entity> {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public List<Entity> list() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            Criteria query = session.createCriteria(entityClass);
-            List<Entity> result = query.list();
+            CriteriaBuilder query = session.getCriteriaBuilder();
+            CriteriaQuery<Entity> criteriaQuery = query.createQuery(entityClass);
+            Root<Entity> root = criteriaQuery.from(entityClass);
+            CriteriaQuery<Entity> all = criteriaQuery.select(root);
+            TypedQuery<Entity> allQuery = session.createQuery(all);
+
+            List<Entity> result = allQuery.getResultList();
             return result;
         } catch (RuntimeException error) {
             throw error;
@@ -52,13 +60,16 @@ public class GenericDAO<Entity> {
         }
     }
 
-    @SuppressWarnings("unchecked")
     public Entity search(Long code) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            Criteria query = session.createCriteria(entityClass);
-            query = query.add(org.hibernate.criterion.Restrictions.idEq(code));
-            Entity result = (Entity) query.uniqueResult();
+            CriteriaBuilder query = session.getCriteriaBuilder();
+            CriteriaQuery<Entity> criteriaQuery = query.createQuery(entityClass);
+            Root<Entity> root = criteriaQuery.from(entityClass);
+            CriteriaQuery<Entity> one = criteriaQuery.select(root).where(query.equal(root.get("id"), code));
+            TypedQuery<Entity> oneQuery = session.createQuery(one);
+
+            Entity result = (Entity) oneQuery.getSingleResult();
             return result;
         } catch (RuntimeException error) {
             throw error;
@@ -73,7 +84,7 @@ public class GenericDAO<Entity> {
 
         try {
             transaction = session.beginTransaction();
-            session.delete(entity);
+            session.remove(entity);
             transaction.commit();
         } catch (RuntimeException error) {
             if (transaction != null) {
@@ -91,7 +102,7 @@ public class GenericDAO<Entity> {
 
         try {
             transaction = session.beginTransaction();
-            session.update(entity);
+            session.merge(entity);
             transaction.commit();
         } catch (RuntimeException error) {
             if (transaction != null) {

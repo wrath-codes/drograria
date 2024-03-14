@@ -11,7 +11,7 @@ import com.wrathcodes.restaurant.domain.Restaurant;
 public class RestaurantDAOTest {
 
     @Test
-    @Ignore
+    // @Ignore
     public void save() {
         Restaurant restaurant = new Restaurant();
 

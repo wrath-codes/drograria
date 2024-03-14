@@ -1,7 +1,7 @@
 package com.wrathcodes.restaurant.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Ingredient extends GenericDomain {
